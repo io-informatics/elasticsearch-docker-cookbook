@@ -1,6 +1,6 @@
 # elasticsearch-docker-cookbook
 
-Installs and configures OrientDb as a Docker container
+Installs and configures elasticsearch as a Docker container
 
 ## Supported Platforms
 

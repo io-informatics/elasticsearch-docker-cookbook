@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: centos-7.0
+
+suites:
+  - name: default
+    run_list:
+      - "recipe[elasticsearch-docker]"
+    attributes:
+      docker:
+        package:
+           name: docker
+        image_cmd_timeout: 1200

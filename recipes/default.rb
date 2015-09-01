@@ -1,4 +1,6 @@
-include_recipe "docker"
+docker_service 'default' do
+  action [:create, :start]
+end
 
 # Pull docker image
 docker_image node[:elasticsearch][:docker_image] do
@@ -31,12 +33,12 @@ end
 
 # Run the docker container
 docker_container "elasticsearch" do
-	action :run
 	image node[:elasticsearch][:docker_image]
+	tag node[:elasticsearch][:docker_image_tag]
 	container_name node[:elasticsearch][:docker_container]
 	detach true
 	port ['9200:9200', '9300:9300']
-	volume volumens
+	volumes volumens
 	entrypoint "/elasticsearch/bin/elasticsearch -Des.config=/config/elasticsearch.yml" if config_provided
 end
 

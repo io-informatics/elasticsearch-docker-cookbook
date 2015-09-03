@@ -38,7 +38,7 @@ docker_container "elasticsearch" do
 	container_name node[:elasticsearch][:docker_container]
 	detach true
 	port ['9200:9200', '9300:9300']
-	volumes volumens
+	binds volumens
 	entrypoint "/elasticsearch/bin/elasticsearch -Des.config=/config/elasticsearch.yml" if config_provided
 end
 
